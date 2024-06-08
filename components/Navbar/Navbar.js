@@ -5,7 +5,6 @@ const Navbar = () =>{
   <ul id="navbar">
       <li onclick="Home()">home</li>
       <li onclick="Contact()">contact</li>
-      <li onclick="Hello()">hello</li>
   </ul>
   
 <style>

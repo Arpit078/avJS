@@ -1,74 +1,22 @@
-import http from 'http';
-import fs from 'fs/promises';
-import {
-	fileURLToPath
-} from 'url';
-import {
-	dirname
-} from 'path';
-import path from 'path';
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import compiler from './scripts/compile.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import compiler from './scripts/compile.js';
+await compiler();
 
-let routes = await compiler();
+const app = express();
+// Serve static files from the 'public' directory
+app.use(express.static(join(__dirname)));
 
-const server = http.createServer(async (req, res) => {
-    const { method, url } = req;
-
-    // Map file extensions to MIME types
-    const mimeTypes = {
-        '.html': 'text/html',
-        '.css': 'text/css',
-        '.js': 'text/javascript',
-        // Add more as needed
-    };
-
-    // Function to send a response with a specific status code and content type
-    const sendResponse = (statusCode, contentType, content) => {
-        res.writeHead(statusCode, { 'Content-Type': contentType });
-        res.end(content);
-    };
-
-    // Function to serve static files
-    const serveStaticFile = async (filePath) => {
-        try {
-            // console.log(filePath)
-            const fileContent = await fs.readFile(filePath);
-            const ext = path.extname(filePath);
-            const contentType = mimeTypes[ext] || 'application/octet-stream';
-            sendResponse(200, contentType, fileContent);
-        } catch (error) {
-            console.log(error)
-            sendResponse(404, 'text/plain', 'Not Found');
-        }
-    };
-
-    // Function to handle routes
-    const handleRoutes = async () => {
-        const indexPath = path.join(__dirname, 'index.html');
-        await serveStaticFile(indexPath);
-    };
-
-    // Routing logic
-    if (method === 'GET') {
-        if (routes.includes(url)) {
-            await handleRoutes();
-        }
-        else {
-            const filePath = path.join(__dirname, url);
-            await serveStaticFile(filePath);
-        }
-
-    } else {
-        sendResponse(405, 'text/plain', 'Method Not Allowed');
-    }
+// Catch-all handler for any request that doesn't match the above
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
 });
 
-const PORT = process.env.PORT || 8181;
-
-// Start the server
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+const port = process.env.PORT || 3000; // Use environment variable if available, otherwise default to 3000
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });

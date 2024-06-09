@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compiler = async()=>{
+  console.log("executing compiler")
 let routes = []
 function readDirAsync(directoryPath) {
 	return new Promise((resolve, reject) => {
@@ -137,14 +138,15 @@ pageFileNames.forEach(file => {
 	} else {
 		appendRouterWithNavigate_WithoutScript(file);
 	}
-	routesObj = routesObj + `,"/${file}":${file}Data,"${file}":${file}Data`
-  routes.push(`/${file}`)
+	routesObj = routesObj + `,"/${file.toLowerCase()}":${file}Data,"${file}":${file}Data`
+  routes.push(`/${file.toLowerCase()}`)
 });
 
 routesObj = routesObj + `};
 if(window.location.pathname in routes == true)
     {
         dom.innerHTML = routes[window.location.pathname];
+        // console.log("in routing")
     }
 
 var logicRoutes =${JSON.stringify(logicFileNames)};

@@ -47,10 +47,11 @@ function Home()
       };
       
       
-var routes = {"":HomeData,"/Contact":ContactData,"Contact":ContactData,"/Home":HomeData,"Home":HomeData};
+var routes = {"":HomeData,"/contact":ContactData,"Contact":ContactData,"/home":HomeData,"Home":HomeData};
 if(window.location.pathname in routes == true)
     {
         dom.innerHTML = routes[window.location.pathname];
+        // console.log("in routing")
     }
 
 var logicRoutes =["Contact","Home"];

@@ -138,7 +138,7 @@ pageFileNames.forEach(file => {
 	} else {
 		appendRouterWithNavigate_WithoutScript(file);
 	}
-	routesObj = routesObj + `,"/${file.toLowerCase()}":${file}Data,"${file}":${file}Data`
+	routesObj = routesObj + `,"/${file.toLowerCase()}":${file}Data,"/${file}":${file}Data`
   routes.push(`/${file.toLowerCase()}`)
 });
 

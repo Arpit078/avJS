@@ -47,7 +47,7 @@ function Home()
       };
       
       
-var routes = {"":HomeData,"/contact":ContactData,"Contact":ContactData,"/home":HomeData,"Home":HomeData};
+var routes = {"":HomeData,"/contact":ContactData,"/Contact":ContactData,"/home":HomeData,"/Home":HomeData};
 if(window.location.pathname in routes == true)
     {
         dom.innerHTML = routes[window.location.pathname];

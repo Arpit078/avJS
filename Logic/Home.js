@@ -1,1 +1,1 @@
-console.log("logic file of home js")
+console.log("hello")

@@ -19,5 +19,5 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 3000; // Use environment variable if available, otherwise default to 3000
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Application started on  http://localhost:${port}`);
 });

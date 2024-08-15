@@ -31,6 +31,7 @@ function Contact()
           onNavigate("/Contact");
           let myScript = document.createElement("script");
           myScript.setAttribute("src", "../Logic/Contact.js");
+          myScript.setAttribute("type", "module");
           removeScriptBySrc("Logic")
           document.body.appendChild(myScript);
       };
@@ -42,6 +43,7 @@ function Home()
           onNavigate("/Home");
           let myScript = document.createElement("script");
           myScript.setAttribute("src", "../Logic/Home.js");
+          myScript.setAttribute("type", "module");
           removeScriptBySrc("Logic")
           document.body.appendChild(myScript);
       };
@@ -66,6 +68,7 @@ if(logicRoutes.includes(window.location.pathname.slice(1)))
             filepath = "../Logic/Home.js"
         }
         myScript.setAttribute("src", filepath);
+        myScript.setAttribute("type", "module");
         document.body.appendChild(myScript);
     }
 function loadScriptBasedOnRoute() {
@@ -77,6 +80,7 @@ function loadScriptBasedOnRoute() {
                 onNavigate("/"+filename)
                 const filepath = "../Logic/" + filename + ".js";
                 myScript.setAttribute("src", filepath);
+                myScript.setAttribute("type", "module");
                 document.body.appendChild(myScript);
                 // console.log("executed")
             }

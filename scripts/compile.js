@@ -31,7 +31,7 @@ function appendRouterWithNavigate_WithScript(fileName) {
 const ${fileName}Data =sessionStorage.getItem("${fileName}");
 function ${fileName}()
       {
-          onNavigate("${fileName}");
+          onNavigate("/${fileName}");
           let myScript = document.createElement("script");
           myScript.setAttribute("src", "../Logic/${fileName}.js");
           removeScriptBySrc("Logic")
@@ -48,7 +48,7 @@ function ${fileName}()
 function appendRouterWithNavigate_WithoutScript(fileName) {
       const toWriteRouter = `const ${fileName}Data =sessionStorage.getItem("${fileName}");
             function ${fileName}(){
-                onNavigate("${fileName}");
+                onNavigate("/${fileName}");
             };`
       fs.appendFileSync(routerFilePath, toWriteRouter, (err, contents) => {
         if (err) throw err;
@@ -68,7 +68,7 @@ async function blockingFileNamesRead(files){
 }
 const logicFiles = await readDirAsync(path.join(__dirname, "../Logic"))
 const logicFileNames = await blockingFileNamesRead(logicFiles)
-
+logicFileNames.push("")
 const pagesFiles = await readDirAsync(path.join(__dirname, "../Pages"))
 let pageFileNames = await blockingFileNamesRead(pagesFiles)
 
@@ -96,7 +96,7 @@ function onNavigate(pathname){
   window.history.pushState(
       {},
       '',
-      window.location.origin +"/"+pathname
+      window.location.origin+pathname
   )
   // window.location.pathname = pathname
   
@@ -156,7 +156,10 @@ if(logicRoutes.includes(window.location.pathname.slice(1)))
     {
         let myScript = document.createElement("script");
         const filename = window.location.pathname.slice(1)
-        const filepath = "../Logic/" + filename + ".js"
+        let filepath = "../Logic/" + filename + ".js"
+        if(filename==""){
+            filepath = "../Logic/Home.js"
+        }
         myScript.setAttribute("src", filepath);
         document.body.appendChild(myScript);
     }
@@ -166,7 +169,7 @@ function loadScriptBasedOnRoute() {
             if (logicRoutes.includes(pathname)) {
                 let myScript = document.createElement("script");
                 const filename = pathname;
-                onNavigate(filename)
+                onNavigate("/"+filename)
                 const filepath = "../Logic/" + filename + ".js";
                 myScript.setAttribute("src", filepath);
                 document.body.appendChild(myScript);

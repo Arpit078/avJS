@@ -7,7 +7,7 @@ function onNavigate(pathname){
   window.history.pushState(
       {},
       '',
-      window.location.origin +"/"+pathname
+      window.location.origin+pathname
   )
   // window.location.pathname = pathname
   
@@ -28,7 +28,7 @@ function removeScriptBySrc(src) {
 const ContactData =sessionStorage.getItem("Contact");
 function Contact()
       {
-          onNavigate("Contact");
+          onNavigate("/Contact");
           let myScript = document.createElement("script");
           myScript.setAttribute("src", "../Logic/Contact.js");
           removeScriptBySrc("Logic")
@@ -39,7 +39,7 @@ function Contact()
 const HomeData =sessionStorage.getItem("Home");
 function Home()
       {
-          onNavigate("Home");
+          onNavigate("/Home");
           let myScript = document.createElement("script");
           myScript.setAttribute("src", "../Logic/Home.js");
           removeScriptBySrc("Logic")
@@ -54,14 +54,17 @@ if(window.location.pathname in routes == true)
         // console.log("in routing")
     }
 
-var logicRoutes =["Contact","Home"];
+var logicRoutes =["Contact","Home",""];
 
 //executes only once for the cases when the user visits the specific route from search
 if(logicRoutes.includes(window.location.pathname.slice(1)))
     {
         let myScript = document.createElement("script");
         const filename = window.location.pathname.slice(1)
-        const filepath = "../Logic/" + filename + ".js"
+        let filepath = "../Logic/" + filename + ".js"
+        if(filename==""){
+            filepath = "../Logic/Home.js"
+        }
         myScript.setAttribute("src", filepath);
         document.body.appendChild(myScript);
     }
@@ -71,7 +74,7 @@ function loadScriptBasedOnRoute() {
             if (logicRoutes.includes(pathname)) {
                 let myScript = document.createElement("script");
                 const filename = pathname;
-                onNavigate(filename)
+                onNavigate("/"+filename)
                 const filepath = "../Logic/" + filename + ".js";
                 myScript.setAttribute("src", filepath);
                 document.body.appendChild(myScript);

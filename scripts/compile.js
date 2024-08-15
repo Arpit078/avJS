@@ -32,11 +32,12 @@ const ${fileName}Data =sessionStorage.getItem("${fileName}");
 function ${fileName}()
       {
           onNavigate("/${fileName}");
-          let myScript = document.createElement("script");
-          myScript.setAttribute("src", "../Logic/${fileName}.js");
-          myScript.setAttribute("type", "module");
-          removeScriptBySrc("Logic")
-          document.body.appendChild(myScript);
+          // let myScript = document.createElement("script");
+          // myScript.setAttribute("src", "../Logic/${fileName}.js");
+          // myScript.setAttribute("type", "module");
+          // removeScriptBySrc("Logic")
+          // document.body.appendChild(myScript);
+          window.location.reload()
       };
       
       `

@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e js,json,html,css --watch '*' dev-server.js",
+    "dev": "nodemon -e js,json,html,css --watch '*' server.js",
     "start": "node server.js"
   }
 }

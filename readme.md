@@ -2,7 +2,7 @@
 
 Welcome to **Pre-ReactJS** — a lightweight frontend framework for building Single Page Applications (SPAs) with VanillaJS, HTML, and CSS.
 
-This is the github repository for Pre-ReactJS.
+This is the github repository for Pre-ReactJ. npm page for the package is [npm](https://www.npmjs.com/package/pre-reactjs)
 
 Explore the full documentation here: [Documentation](https://pre-reactjs-docs.vercel.app/).
 

@@ -10,32 +10,19 @@ const Home = /*html*/ `
 </div>
     <p class="subHead">Why Pre-ReactJS</p>
     <p class="paragraph">
-        The main Idea behind developing pre-react was to solve all the problems that I was facing with ReactJS while still having the goodness it offered as a single page application development library. 
-    </p>
-    <p class="paragraph">
-        I hated react for 
-        <br>
-        • No DOM manipulation access, as I was used to vanillaJS it hurt a bit
-        <br>
-        • No inhouse routing and required to use router tag
-        <br>
-        • dev server took infinity to load up.
-        <br>
-        • bulky boiler code only made for industry level web apps
+        The main Idea behind developing pre-reactJS was to use plain old VanillaJS for developing single page applications for my hobby projects but still have the goodness the industry level frameworks offered such as ReactJS and NextJS.
     </p>
     <p class="subHead">
-        What Pre-ReactJS solves 
+        What Pre-ReactJS provides 
     </p>
     <p class="paragraph">
-        The features included packed in this powerpacked light library are :
-        <br>
+        • Power to create single page apps using simple HTML,CSS and Javascript stack.
+        <br>   
         • Component based architecture and one time call on server for static resources.
         <br>
-        • Inhouse hashrouting so that all routes of the website are directly accesible from the searchbar even on free tier hosting services.
+        • Inhouse file based routing.
         <br>
-        • Automatic routing using build command, No routing tags.
-        <br>
-        •Dom manipulation access in a single page application😲. Very handy for the vanilla JS dev looking for a SPA library.
+        • Dom and window api access in a single page application😲.
         <br>
         • Extremely light weight and made for indie and hobby projects.
     </p>

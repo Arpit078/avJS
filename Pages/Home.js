@@ -18,7 +18,7 @@ const Home = /*html*/ `
     <p class="paragraph">
         • Power to create single page apps using simple HTML,CSS and Javascript stack.
         <br>   
-        • Component based architecture and one time call on server for static resources.
+        • Component based architecture.
         <br>
         • Inhouse file based routing.
         <br>
